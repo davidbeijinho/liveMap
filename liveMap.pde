@@ -1,3 +1,4 @@
+//LIVE MAP
 import codeanticode.syphon.*;
 import SimpleOpenNI.*;
 
