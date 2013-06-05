@@ -72,10 +72,7 @@ void draw()
       index = x + y * context.depthWidth();
       if(depthMap[index] > 0)
       { 
-
         realWorldPoint = context.depthMapRealWorld()[index];
-
-
         if(userMap != null && userMap[index] != 0)
         {
           int colorIndex = userMap[index] % userColors.length;
@@ -99,10 +96,6 @@ void draw()
   server.sendImage(canvas);
 }
 
-
-
-
-
 void onNewUser(int userId)
 {
   println("onNewUser - userId: " + userId);  
@@ -113,10 +106,6 @@ void onLostUser(int userId)
   println("onLostUser - userId: " + userId);
 }
 
-
-
-
-
 void keyPressed()
 {
   switch(key)
@@ -125,44 +114,39 @@ void keyPressed()
     context.setMirror(!context.mirror());
     break;
   }
-
   switch(keyCode)
   {
     case LEFT:
     if(keyEvent.isShiftDown())
-    rotZ+=0.01f;
+      rotZ+=0.01f;
     else
-    rotY += 0.01f;
+      rotY += 0.01f;
     break;
     case RIGHT:
     if(keyEvent.isShiftDown())
-    {
       rotZ-=0.01f;
-//if(rotZ < 0.01)
-// rotZ = 0.001;
-}
-else
-rotY -= 0.01f;
-break;
-case UP:
-if(keyEvent.isShiftDown())
-zoomF += 0.001f;
-else
-rotX += 0.01f;
-break;
-case DOWN:
-if(keyEvent.isShiftDown())
-{
-  zoomF -= 0.01f;
-  if(zoomF < 0.01)
-  zoomF = 0.001;
-}
-else
-rotX -= 0.01f;
-break;
-}
+    else
+      rotY -= 0.01f;
+    break;
+    case UP:
+    if(keyEvent.isShiftDown())
+      zoomF += 0.001f;
+    else
+      rotX += 0.01f;
+    break;
+    case DOWN:
+    if(keyEvent.isShiftDown())
+    {
+      zoomF -= 0.01f;
+      if(zoomF < 0.01)
+        zoomF = 0.001;
+    }
+    else
+      rotX -= 0.01f;
+    break;
+  }
 
-println("RX-> "+rotX+" RY-> "+rotY+" RZ-> "+rotZ+" ZOOM-> "+zoomF);
+  println("RX-> "+rotX+" RY-> "+rotY+" RZ-> "+rotZ+" ZOOM-> "+zoomF);
 }
 
 //boolean sketchFullScreen() {
